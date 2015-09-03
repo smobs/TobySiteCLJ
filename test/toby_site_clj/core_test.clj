@@ -1,6 +1,6 @@
-(ns hello-server.core-test
+(ns toby-site-clj.core-test
   (:require [clojure.test :refer :all]
-            [hello-server.core :refer :all]))
+            [toby-site-clj.core :refer :all]))
 
 (deftest a-test
   (testing "FIXME, I fail."

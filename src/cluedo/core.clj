@@ -120,7 +120,9 @@
 (def example-cluedo (resolve-knowledge
                      (-> new-cluedo
                          (add-fact (has-card "Toby" :Billiards :Green))
-                         (add-fact (guess "Toby" :Peacock :Hall)))))
+                         (add-fact (guess "Toby" :Peacock :Hall))
+                         (add-fact (guess "Jenny" :Hall :Scarlet))
+                         (add-fact (doesnt-have "Jenny" :Scarlet)))))
 
 
 example-cluedo

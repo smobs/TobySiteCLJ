@@ -1,1 +1,1 @@
-web: java $JVM_OPTS -cp target/toby-site-clj-standalone.jar
+web: java $JVM_OPTS -jar target/toby-site-clj-standalone.jar

@@ -6,5 +6,6 @@
   :dependencies [[org.clojure/clojure "1.7.0"]
                  [org.clojure/data.json "0.2.6"]]
   :plugins [[lein-ring "0.9.6"]]
+  :projiles {:uberjar {:aot :all}}
   :clean-targets [:target-path "out"]
   :ring {:handler toby-site-clj.core/handler})

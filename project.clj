@@ -13,6 +13,7 @@
 
   :min-lein-version "2.5.0"
   :main ^:skip-aot toby-site-clj.core
+ :source-paths ["src/clj"]
   :plugins [[lein-ring "0.9.6"]
             [lein-cljsbuild "1.1.0"]]
   :profiles {:uberjar {:aot :all}}
@@ -23,7 +24,7 @@
                   [:cljsbuild :builds :app :compiler :output-to]]
   :ring {:handler toby-site-clj.core/routes} 
 
-  :cljsbuild {:builds {:app {:source-paths ["src-cljs"]
+  :cljsbuild {:builds {:app {:source-paths ["src/cljs"]
                              :compiler {:output-to     "resources/public/js/app.js"
                                         :output-dir    "resources/public/js/out"
                                         :asset-path   "js/out"

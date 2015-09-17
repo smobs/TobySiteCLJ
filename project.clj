@@ -16,6 +16,7 @@
   :plugins [[lein-ring "0.9.6"]
             [lein-cljsbuild "1.1.0"]]
   :profiles {:uberjar {:aot :all}}
+  :hooks [leiningen.cljsbuild] 
   :uberjar-name "toby-site-clj-standalone.jar"
   :clean-targets ^{:protect false} [:target-path 
                   [:cljsbuild :builds :app :compiler :output-dir]

@@ -13,7 +13,7 @@
 
   :min-lein-version "2.5.0"
   :main ^:skip-aot toby-site-clj.core
- :source-paths ["src/clj"]
+  :source-paths ["src/clj"]
   :plugins [[lein-ring "0.9.6"]
             [lein-cljsbuild "1.1.0"]]
   :profiles {:uberjar {:aot :all}}

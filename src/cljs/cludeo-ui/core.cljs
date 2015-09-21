@@ -1,16 +1,16 @@
 (ns cluedo-ui.core
-  (:require [reagent.core :as r]))
+  (:require [reagent.core :as r]
+            [cluedo.core :as c]))
 
-(def players [
-                  {:name "Toby" :cards ["Peacock" "Library"]}
-                  {:name "Jenny"}
-                  {:title "Dr Dre"}])
+(def players [{:name "Toby" :cards ["Peacock" "Library"]}
+              {:name "Jenny"}
+              {:title "Dr Dre"}])
 
 (defonce game-state (r/atom 0))
 
 (defn player-widget
   [player] 
-  [:div  [:h3 (get player :name "Mysterious Challenger")]
+  [:div  [:h3 player]
    [:ul 
     (for [card (:cards player)]
       [:li (str card)]
@@ -24,6 +24,6 @@
    [:input {:type "button" :value "HELLLO" 
             :on-click #(swap! game-state inc)}]
    
-   (for [player players]
+   (for [player (get-in c/new-cluedo [:cluedo :players])]
      ^{:key player} 
      [player-widget player])])

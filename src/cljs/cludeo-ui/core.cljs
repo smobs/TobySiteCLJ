@@ -2,28 +2,36 @@
   (:require [reagent.core :as r]
             [cluedo.core :as c]))
 
-(def players [{:name "Toby" :cards ["Peacock" "Library"]}
-              {:name "Jenny"}
-              {:title "Dr Dre"}])
-
-(defonce game-state (r/atom 0))
-
+(defonce game-state (r/atom c/example-cluedo))
 (defn player-widget
-  [player] 
-  [:div  [:h3 player]
-   [:ul 
-    (for [card (:cards player)]
-      [:li (str card)]
-          )]])
+  [player player-state] 
+  [:div  
+   [:h3 player]
+   [:ul
+    [:b "Has cards"]
+    (for [card (:cards player-state)]
+      [:li (str card)])]])
+
+(defn players-widget
+  []
+  [:div
+   (let [game-state @game-state
+         players (get-in game-state [:cluedo :players])]
+     (for [player players]
+       (let [player-state (get game-state player)]
+         ^{:key player} 
+         [player-widget player player-state])))]
+)
+(defn add-guess
+  []
+[:div
+ [:input {:type "button" :value "Guess"}]])
 
 (defn ui
   []
-  [:div 
-   "Push the button" 
-   @game-state
-   [:input {:type "button" :value "HELLLO" 
-            :on-click #(swap! game-state inc)}]
-   
-   (for [player (get-in c/new-cluedo [:cluedo :players])]
-     ^{:key player} 
-     [player-widget player])])
+  [:div
+   [add-guess]
+   [players-widget]])
+
+
+

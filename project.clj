@@ -15,7 +15,8 @@
   :main ^:skip-aot toby-site-clj.core
   :source-paths ["src/clj", "src/cljc"]
   :plugins [[lein-ring "0.9.6"]
-            [lein-cljsbuild "1.1.0"]]
+            [lein-cljsbuild "1.1.0"]
+            [lein-figwheel "0.4.0"]]
   :profiles {:uberjar {:aot :all}}
   :hooks [leiningen.cljsbuild] 
   :uberjar-name "toby-site-clj-standalone.jar"
@@ -24,9 +25,10 @@
                   [:cljsbuild :builds :app :compiler :output-to]]
   :ring {:handler toby-site-clj.core/routes} 
 
-  :cljsbuild {:builds {:app {:source-paths ["src/cljs", "src/cljc"]
+  :cljsbuild {:builds {:app {
+                             :figwheel true
+                             :source-paths ["src/cljs", "src/cljc"]
                              :compiler {:output-to     "resources/public/js/app.js"
                                         :output-dir    "resources/public/js/out"
-                                        :asset-path   "js/out"
-                                        :optimizations :whitespace
-                                        :pretty-print  true}}}})
+                                        :asset-path   "js/out"                                                               :pretty-print  true
+                                        :main "home.core"}}}})

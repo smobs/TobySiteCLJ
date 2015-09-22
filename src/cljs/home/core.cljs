@@ -4,10 +4,7 @@
 
 (defn some-component 
   []
-  [:div 
-   [:h1 "Nothing can stop me now!"]
-   [:p "I'm king of the world."]
-   [cl/ui]])
+  [cl/ui])
 
 
 (def mount-it
